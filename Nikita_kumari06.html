@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nikita Kumari | Portfolio</title>
+  <style>
+    :root {
+      --bg: #f6f0e3;
+      --bg-soft: #fffaf1;
+      --surface: rgba(255, 252, 245, 0.84);
+      --surface-strong: #fff7eb;
+      --text: #2d241c;
+      --muted: #6d5b4d;
+      --accent: #b46a4d;
+      --accent-soft: #efd1c2;
+      --border: rgba(125, 98, 80, 0.2);
+      --shadow: 0 18px 40px rgba(95, 73, 57, 0.12);
+    }
+
+    body.dark-mode {
+      --bg: #1d2830;
+      --bg-soft: #24333d;
+      --surface: rgba(37, 50, 59, 0.84);
+      --surface-strong: #2d3c46;
+      --text: #f4eadc;
+      --muted: #c8b9ab;
+      --accent: #f0a37e;
+      --accent-soft: rgba(240, 163, 126, 0.16);
+      --border: rgba(240, 226, 212, 0.12);
+      --shadow: 0 18px 40px rgba(6, 10, 13, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(240, 163, 126, 0.16), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(120, 148, 162, 0.18), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      width: min(1100px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1.2rem 0 3rem;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 1rem;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1.2rem;
+      margin-bottom: 1.6rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--border);
+      background: var(--surface-strong);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1.4rem;
+      align-items: stretch;
+      margin-bottom: 1.4rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-copy {
+      padding: 3rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 0.5rem 0.8rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      line-height: 1.04;
+      margin: 1rem 0;
+    }
+
+    .hero-copy p {
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.75;
+      max-width: 60ch;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.8rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.2rem;
+      border-radius: 14px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: transparent;
+      color: #fff8f2;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--text);
+    }
+
+    .hero-side {
+      padding: 1.4rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .mini-panel {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 1.2rem;
+    }
+
+    .mini-panel h3 {
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .mini-panel p,
+    .mini-panel li {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .mini-panel ul {
+      padding-left: 1.1rem;
+      margin-bottom: 0;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .section-card {
+      padding: 2rem;
+    }
+
+    .section-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-card p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .skill-list,
+    .project-list {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1.25rem;
+    }
+
+    .skill-item,
+    .project-item {
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface-strong);
+    }
+
+    .skill-item span {
+      color: var(--muted);
+      display: block;
+      margin-top: 0.35rem;
+      font-size: 0.95rem;
+    }
+
+    .project-item h3 {
+      margin-bottom: 0.45rem;
+    }
+
+    .project-item p {
+      margin-bottom: 0.9rem;
+    }
+
+    .contact-card {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      max-width: 52ch;
+      margin: 0.8rem auto 1.4rem;
+      line-height: 1.8;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.9rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+      padding-top: 1rem;
+    }
+
+    @media (max-width: 860px) {
+      .topbar,
+      .hero,
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        position: static;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero-copy,
+      .section-card,
+      .contact-card {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page-shell {
+        width: min(100% - 1rem, 1100px);
+      }
+
+      h1 {
+        font-size: 2.3rem;
+      }
+
+      .cta-row,
+      .contact-links {
+        flex-direction: column;
+      }
+
+      .button,
+      .theme-toggle {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">Nikita Kumari</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode">
+        Dark mode
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <article class="card hero-copy">
+          <span class="eyebrow">Personal Portfolio</span>
+          <h1>Hello, I'm Nikita.</h1>
+          <p>
+            I am a student and aspiring professional who enjoys learning new things,
+            building practical projects, and growing step by step. This is a simple
+            space to introduce myself, share what I do, and highlight a few things I
+            am working on.
+          </p>
+          <div class="cta-row">
+            <a class="button primary" href="#contact">Get in touch</a>
+            <a class="button secondary" href="#projects">See my work</a>
+          </div>
+        </article>
+
+        <aside class="card hero-side">
+          <div class="mini-panel">
+            <h3>Quick Intro</h3>
+            <p>
+              Based on curiosity, consistency, and a simple goal: keep improving every day.
+            </p>
+          </div>
+          <div class="mini-panel">
+            <h3>Currently Focused On</h3>
+            <ul>
+              <li>Learning web development basics</li>
+              <li>Improving project-building skills</li>
+              <li>Creating a stronger personal portfolio</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section-grid">
+        <article class="card section-card" id="about">
+          <h2>About Me</h2>
+          <p>
+            I like keeping things simple, clear, and meaningful. I enjoy exploring
+            design, technology, and new ideas that help me build useful work. I am
+            interested in opportunities where I can learn, contribute, and grow with experience.
+          </p>
+          <p>
+            Outside of work or study, I value calm routines, creative thinking, and
+            building things that represent me in an honest way.
+          </p>
+        </article>
+
+        <article class="card section-card" id="skills">
+          <h2>Skills</h2>
+          <p>
+            These are some basic areas I am working on and improving with practice.
+          </p>
+          <div class="skill-list">
+            <div class="skill-item">
+              HTML & CSS
+              <span>Creating clean and responsive webpage layouts</span>
+            </div>
+            <div class="skill-item">
+              JavaScript Basics
+              <span>Adding simple interactivity and page behavior</span>
+            </div>
+            <div class="skill-item">
+              Communication
+              <span>Sharing ideas clearly and working well with others</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="card section-card" id="projects">
+        <h2>Projects</h2>
+        <p>
+          A few simple examples of the kind of work I can showcase here. You can replace
+          these with your real projects anytime.
+        </p>
+        <div class="project-list">
+          <div class="project-item">
+            <h3>Portfolio Website</h3>
+            <p>A personal site designed to introduce myself with a clean layout and theme switcher.</p>
+            <a class="button secondary" href="#contact">Ask me about it</a>
+          </div>
+          <div class="project-item">
+            <h3>Student Project</h3>
+            <p>A small academic or practice project showing my problem-solving and learning process.</p>
+            <a class="button secondary" href="#contact">View details</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="card contact-card" id="contact">
+        <h2>Contact</h2>
+        <p>
+          If you would like to connect, collaborate, or know more about my work,
+          feel free to reach out through any of the links below.
+        </p>
+        <div class="contact-links">
+          <a class="button primary" href="mailto:nikita@example.com">Email Me</a>
+          <a class="button secondary" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="button secondary" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      &copy; 2026 Nikita Kumari. Built with a calm light theme and a soft dark mode.
+    </footer>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("portfolio-theme");
+
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark-mode");
+      themeToggle.textContent = "Light mode";
+    }
+
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const isDarkMode = document.body.classList.contains("dark-mode");
+      themeToggle.textContent = isDarkMode ? "Light mode" : "Dark mode";
+      localStorage.setItem("portfolio-theme", isDarkMode ? "dark" : "light");
+    });
+  </script>
+</body>
+</html>
