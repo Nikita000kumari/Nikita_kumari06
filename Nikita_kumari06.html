@@ -14,39 +14,39 @@
     }
 
     :root {
-      --bg: #f2f0ec;
-      --fg: #2f1414;
-      --fg-heading: #5f0808;
-      --fg-soft: #775f57;
-      --fg-faint: #a28e84;
-      --line: #e4dccb;
-      --toggle-bg: rgba(238, 230, 210, 0.84);
-      --toggle-border: #ddd3bf;
-      --toggle-fg: #5f0808;
-      --toggle-hover: #2f1414;
-      --link: #7a0b0b;
-      --link-line: #cfb8a5;
-      --link-hover: #5f0808;
-      --glow: rgba(95, 8, 8, 0.08);
-      --glow-soft: rgba(238, 230, 210, 0.7);
+      --bg: #edf3fb;
+      --fg: #182338;
+      --fg-heading: #253a73;
+      --fg-soft: #53627f;
+      --fg-faint: #8895ad;
+      --line: #d4deef;
+      --toggle-bg: rgba(237, 243, 251, 0.88);
+      --toggle-border: #c7d4ea;
+      --toggle-fg: #253a73;
+      --toggle-hover: #182338;
+      --link: #314ea0;
+      --link-line: #b9c7e8;
+      --link-hover: #1f3270;
+      --glow: rgba(64, 92, 173, 0.14);
+      --glow-soft: rgba(133, 104, 201, 0.16);
     }
 
     body.dark-mode {
-      --bg: #5a0707;
-      --fg: #f2f0ec;
-      --fg-heading: #eee6d2;
-      --fg-soft: #e1d5c2;
-      --fg-faint: #c9b8aa;
-      --line: #7a1414;
-      --toggle-bg: rgba(95, 8, 8, 0.9);
-      --toggle-border: #a85d5d;
-      --toggle-fg: #f2e9db;
+      --bg: #0d1020;
+      --fg: #eef3ff;
+      --fg-heading: #c7d6ff;
+      --fg-soft: #b1bdd9;
+      --fg-faint: #8793b4;
+      --line: #24304d;
+      --toggle-bg: rgba(19, 25, 46, 0.92);
+      --toggle-border: #3f4d77;
+      --toggle-fg: #e7eeff;
       --toggle-hover: #ffffff;
-      --link: #f2f0ec;
-      --link-line: #d8b6a8;
-      --link-hover: #eee6d2;
-      --glow: rgba(95, 8, 8, 0.24);
-      --glow-soft: rgba(238, 230, 210, 0.12);
+      --link: #a9bcff;
+      --link-line: #6274a8;
+      --link-hover: #d9e2ff;
+      --glow: rgba(84, 111, 196, 0.28);
+      --glow-soft: rgba(129, 88, 199, 0.18);
     }
 
     html {
@@ -69,6 +69,112 @@
       transition: background 0.25s ease, color 0.25s ease;
     }
 
+    .sparkle-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .sparkle {
+      position: absolute;
+      top: -10vh;
+      width: 10px;
+      height: 10px;
+      opacity: 0;
+      animation: floatSparkle linear infinite;
+      filter: drop-shadow(0 0 8px rgba(196, 214, 255, 0.3));
+    }
+
+    .sparkle::before,
+    .sparkle::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(169, 188, 255, 0.35));
+    }
+
+    .sparkle::before {
+      width: 2px;
+      height: 10px;
+    }
+
+    .sparkle::after {
+      width: 10px;
+      height: 2px;
+    }
+
+    .sparkle:nth-child(1) {
+      left: 8%;
+      animation-duration: 16s;
+      animation-delay: -2s;
+      transform: scale(0.75);
+    }
+
+    .sparkle:nth-child(2) {
+      left: 22%;
+      animation-duration: 20s;
+      animation-delay: -7s;
+      transform: scale(0.95);
+    }
+
+    .sparkle:nth-child(3) {
+      left: 39%;
+      animation-duration: 18s;
+      animation-delay: -11s;
+      transform: scale(0.7);
+    }
+
+    .sparkle:nth-child(4) {
+      left: 58%;
+      animation-duration: 22s;
+      animation-delay: -4s;
+      transform: scale(0.9);
+    }
+
+    .sparkle:nth-child(5) {
+      left: 74%;
+      animation-duration: 19s;
+      animation-delay: -9s;
+      transform: scale(0.65);
+    }
+
+    .sparkle:nth-child(6) {
+      left: 88%;
+      animation-duration: 24s;
+      animation-delay: -14s;
+      transform: scale(0.85);
+    }
+
+    @keyframes floatSparkle {
+      0% {
+        transform: translate3d(0, 0, 0) scale(var(--sparkle-scale, 1));
+        opacity: 0;
+      }
+
+      12% {
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: translate3d(12px, 52vh, 0) scale(var(--sparkle-scale, 1));
+        opacity: 0.28;
+      }
+
+      88% {
+        opacity: 0.42;
+      }
+
+      100% {
+        transform: translate3d(-10px, 112vh, 0) scale(var(--sparkle-scale, 1));
+        opacity: 0;
+      }
+    }
+
     a {
       color: inherit;
       text-decoration: none;
@@ -77,6 +183,8 @@
     .container {
       width: min(760px, calc(100% - 2.4rem));
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     .theme-toggle {
@@ -205,14 +313,13 @@
     .container::before {
       content: "";
       display: block;
-      width: 44px;
-      height: 44px;
+      width: 88px;
+      height: 6px;
       margin-bottom: 1.2rem;
       border-radius: 999px;
       background:
-        radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.78), transparent 32%),
-        linear-gradient(135deg, rgba(95, 8, 8, 0.96), rgba(122, 11, 11, 0.92));
-      box-shadow: 0 12px 30px rgba(95, 8, 8, 0.18);
+        linear-gradient(90deg, rgba(49, 78, 160, 0.95), rgba(90, 64, 171, 0.72), rgba(49, 78, 160, 0));
+      box-shadow: 0 8px 24px rgba(49, 78, 160, 0.16);
     }
 
     footer {
@@ -252,6 +359,15 @@
   </style>
 </head>
 <body>
+  <div class="sparkle-layer" aria-hidden="true">
+    <span class="sparkle" style="--sparkle-scale: 0.75;"></span>
+    <span class="sparkle" style="--sparkle-scale: 0.95;"></span>
+    <span class="sparkle" style="--sparkle-scale: 0.7;"></span>
+    <span class="sparkle" style="--sparkle-scale: 0.9;"></span>
+    <span class="sparkle" style="--sparkle-scale: 0.65;"></span>
+    <span class="sparkle" style="--sparkle-scale: 0.85;"></span>
+  </div>
+
   <button class="theme-toggle" id="themeToggle" type="button">dark</button>
 
   <div class="container">
@@ -287,6 +403,27 @@
         <h2 class="section-title">about</h2>
         <p class="about-text">
           20 , currently learning and buidling apps.
+        </p>
+      </section>
+
+      <section id="experience">
+        <h2 class="section-title">experience</h2>
+
+        <div class="entry">
+          <span class="entry-tag">intern</span>
+          <span>research internship at IIIT Delhi</span>
+        </div>
+        <p class="entry-desc">
+          worked on research-focused projects, exploring ideas, reading papers, and supporting technical experiments.
+        </p>
+
+        <div class="entry">
+          <span class="entry-tag">ml</span>
+          <span>research internship at IGDTUW</span>
+        </div>
+        <p class="entry-desc">
+          focused on machine learning research, learning how to build, test, and understand practical ML workflows.
+        </p>
       </section>
 
       <section id="projects">
