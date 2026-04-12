@@ -14,39 +14,41 @@
     }
 
     :root {
-      --bg: #edf3fb;
-      --fg: #182338;
-      --fg-heading: #253a73;
-      --fg-soft: #53627f;
-      --fg-faint: #8895ad;
-      --line: #d4deef;
-      --toggle-bg: rgba(237, 243, 251, 0.88);
-      --toggle-border: #c7d4ea;
-      --toggle-fg: #253a73;
-      --toggle-hover: #182338;
-      --link: #314ea0;
-      --link-line: #b9c7e8;
-      --link-hover: #1f3270;
-      --glow: rgba(64, 92, 173, 0.14);
-      --glow-soft: rgba(133, 104, 201, 0.16);
+      --bg: #f7f2e8;
+      --bg-paper: rgba(255, 252, 245, 0.82);
+      --fg: #161616;
+      --fg-heading: #0f0f0f;
+      --fg-soft: #4d473f;
+      --fg-faint: #8a7f72;
+      --line: #d9cfbf;
+      --toggle-bg: rgba(255, 251, 243, 0.92);
+      --toggle-border: #cfc1ab;
+      --toggle-fg: #141414;
+      --toggle-hover: #000000;
+      --link: #141414;
+      --link-line: #b9ac99;
+      --link-hover: #5b5146;
+      --glow: rgba(140, 121, 92, 0.08);
+      --glow-soft: rgba(41, 34, 26, 0.05);
     }
 
     body.dark-mode {
-      --bg: #0d1020;
-      --fg: #eef3ff;
-      --fg-heading: #c7d6ff;
-      --fg-soft: #b1bdd9;
-      --fg-faint: #8793b4;
-      --line: #24304d;
-      --toggle-bg: rgba(19, 25, 46, 0.92);
-      --toggle-border: #3f4d77;
-      --toggle-fg: #e7eeff;
+      --bg: #111111;
+      --bg-paper: rgba(19, 19, 19, 0.86);
+      --fg: #f6f0e7;
+      --fg-heading: #fffaf2;
+      --fg-soft: #cbbfae;
+      --fg-faint: #958877;
+      --line: #312b25;
+      --toggle-bg: rgba(25, 25, 25, 0.94);
+      --toggle-border: #4d4338;
+      --toggle-fg: #f7f0e6;
       --toggle-hover: #ffffff;
-      --link: #a9bcff;
-      --link-line: #6274a8;
-      --link-hover: #d9e2ff;
-      --glow: rgba(84, 111, 196, 0.28);
-      --glow-soft: rgba(129, 88, 199, 0.18);
+      --link: #f5ecdf;
+      --link-line: #756859;
+      --link-hover: #d9cbb8;
+      --glow: rgba(219, 198, 168, 0.06);
+      --glow-soft: rgba(255, 245, 230, 0.03);
     }
 
     html {
@@ -58,6 +60,7 @@
       background:
         radial-gradient(circle at top left, var(--glow), transparent 24rem),
         radial-gradient(circle at 85% 12%, var(--glow-soft), transparent 18rem),
+        linear-gradient(180deg, rgba(255, 252, 246, 0.65), transparent 30%),
         var(--bg);
       color: var(--fg);
       font-family:
@@ -185,6 +188,11 @@
       margin: 0 auto;
       position: relative;
       z-index: 1;
+      padding: 2.4rem 2.2rem 2.8rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: var(--bg-paper);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 50px rgba(28, 22, 15, 0.08);
     }
 
     .theme-toggle {
@@ -200,7 +208,7 @@
       letter-spacing: 0.04em;
       cursor: pointer;
       backdrop-filter: blur(10px);
-      box-shadow: 0 8px 30px rgba(93, 56, 76, 0.08);
+      box-shadow: 0 8px 24px rgba(18, 14, 10, 0.08);
       transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
     }
 
@@ -313,13 +321,12 @@
     .container::before {
       content: "";
       display: block;
-      width: 88px;
-      height: 6px;
+      width: 72px;
+      height: 2px;
       margin-bottom: 1.2rem;
       border-radius: 999px;
-      background:
-        linear-gradient(90deg, rgba(49, 78, 160, 0.95), rgba(90, 64, 171, 0.72), rgba(49, 78, 160, 0));
-      box-shadow: 0 8px 24px rgba(49, 78, 160, 0.16);
+      background: linear-gradient(90deg, #111111, rgba(17, 17, 17, 0.15));
+      box-shadow: none;
     }
 
     footer {
@@ -336,6 +343,10 @@
     @media (max-width: 640px) {
       body {
         padding-top: 82px;
+      }
+
+      .container {
+        padding: 1.6rem 1.2rem 2.1rem;
       }
 
       .theme-toggle {
@@ -411,7 +422,7 @@
 
         <div class="entry">
           <span class="entry-tag">intern</span>
-          <span>research internship at IIIT Delhi</span>
+          <span>research internship at IIT Delhi</span>
         </div>
         <p class="entry-desc">
           worked on research-focused projects, exploring ideas, reading papers, and supporting technical experiments.
@@ -438,8 +449,8 @@
         </p>
 
         <div class="entry">
-          <span class="entry-tag">college</span>
-          <a class="entry-link" href="#contact">student practice project</a>
+          <span class="entry-tag">IBIN</span>
+          <a class="entry-link" href="https://drive.google.com/drive/folders/1l5D9nYhwd_a_tYQ-bNGuyR1Dbzofrm5v?usp=drive_link">student practice project</a>
         </div>
         <p class="entry-desc">
           a placeholder for your academic or self-learning work that you can replace with a real project.
