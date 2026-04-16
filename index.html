@@ -25,6 +25,8 @@
       --line-strong: rgba(23, 23, 23, 0.2);
       --accent: #111111;
       --accent-soft: #7b8798;
+      --link-underline: rgba(126, 108, 156, 0.62);
+      --link-underline-hover: #6f5a93;
       --accent-glow: rgba(123, 135, 152, 0.09);
       --toggle-bg: rgba(255, 255, 255, 0.72);
     }
@@ -41,6 +43,8 @@
       --line-strong: rgba(255, 244, 230, 0.18);
       --accent: #fff8f0;
       --accent-soft: #9fb0c7;
+      --link-underline: rgba(183, 164, 222, 0.74);
+      --link-underline-hover: #d2bdf8;
       --accent-glow: rgba(159, 176, 199, 0.1);
       --toggle-bg: rgba(23, 23, 25, 0.88);
     }
@@ -194,7 +198,7 @@
       gap: 0.45rem;
       color: var(--text);
       text-decoration-line: underline;
-      text-decoration-color: var(--line-strong);
+      text-decoration-color: var(--link-underline);
       text-decoration-thickness: 1px;
       text-underline-offset: 0.22rem;
       transition: color 0.2s ease, text-decoration-color 0.2s ease;
@@ -218,7 +222,7 @@
     .contact-line a:hover {
       color: var(--accent);
       text-decoration-line: underline;
-      text-decoration-color: currentColor;
+      text-decoration-color: var(--link-underline-hover);
       text-decoration-thickness: 1px;
       text-underline-offset: 0.22rem;
     }
@@ -227,7 +231,7 @@
     .contact-line a {
       color: var(--text);
       text-decoration-line: underline;
-      text-decoration-color: var(--line-strong);
+      text-decoration-color: var(--link-underline);
       text-decoration-thickness: 1px;
       text-underline-offset: 0.22rem;
       transition: color 0.2s ease, text-decoration-color 0.2s ease;
