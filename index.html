@@ -107,18 +107,48 @@
     }
 
     .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border: 1px solid var(--line);
       background: var(--toggle-bg);
       color: var(--muted);
       font: inherit;
-      padding: 0.42rem 0.78rem;
+      width: 2.75rem;
+      height: 2.75rem;
+      padding: 0;
       border-radius: 999px;
       cursor: pointer;
+      transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
     }
 
     .theme-toggle:hover {
       color: var(--accent);
       border-color: var(--line-strong);
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle svg {
+      width: 1.12rem;
+      height: 1.12rem;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .theme-toggle .icon-sun,
+    body.dark-mode .theme-toggle .icon-moon {
+      display: none;
+    }
+
+    body.dark-mode .theme-toggle .icon-sun {
+      display: block;
+    }
+
+    .theme-toggle .icon-moon {
+      display: block;
     }
 
     .hero {
@@ -262,7 +292,15 @@
         <a href="#projects">projects</a>
         <a href="#contact">say hi</a>
       </nav>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="toggle dark mode">dark</button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77"></path>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+        </svg>
+      </button>
     </header>
 
     <main id="home">
@@ -370,10 +408,16 @@
     const themeToggle = document.getElementById("themeToggle");
     const savedTheme = localStorage.getItem("nikita-theme");
 
+    function syncThemeToggle(isDark) {
+      themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+      themeToggle.setAttribute("title", isDark ? "Light mode" : "Dark mode");
+    }
+
     if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
       document.body.classList.add("dark-mode");
-      themeToggle.textContent = "light";
     }
+
+    syncThemeToggle(document.body.classList.contains("dark-mode"));
 
     function updateTime() {
       const options = {
@@ -391,7 +435,7 @@
 
     themeToggle.addEventListener("click", () => {
       const isDark = document.body.classList.toggle("dark-mode");
-      themeToggle.textContent = isDark ? "light" : "dark";
+      syncThemeToggle(isDark);
       localStorage.setItem("nikita-theme", isDark ? "dark" : "light");
     });
   </script>
