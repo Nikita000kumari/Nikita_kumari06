@@ -25,17 +25,18 @@
       --line-strong: rgba(23, 23, 23, 0.2);
       --accent: #111111;
       --accent-soft: #7b8798;
-      --link-underline: rgba(126, 108, 156, 0.62);
-      --link-underline-hover: #6f5a93;
+      --link: #b06f7a;
+      --link-underline: rgba(176, 111, 122, 0.72);
+      --link-underline-hover: #8e5861;
       --accent-glow: rgba(123, 135, 152, 0.09);
       --toggle-bg: rgba(255, 255, 255, 0.72);
     }
 
     body.dark-mode {
-      --bg: #101011;
-      --bg-top: rgba(78, 90, 108, 0.16);
-      --bg-bottom-start: #161719;
-      --bg-bottom-end: #0d0d0e;
+      --bg: #090909;
+      --bg-top: rgba(20, 24, 28, 0.08);
+      --bg-bottom-start: #0c0c0d;
+      --bg-bottom-end: #080809;
       --text: #f1f0ec;
       --muted: #c5c0b7;
       --soft: #908a81;
@@ -43,9 +44,17 @@
       --line-strong: rgba(255, 244, 230, 0.18);
       --accent: #fff8f0;
       --accent-soft: #9fb0c7;
-      --link-underline: rgba(183, 164, 222, 0.74);
-      --link-underline-hover: #d2bdf8;
-      --accent-glow: rgba(159, 176, 199, 0.1);
+      /* Dark mode presets to match:
+         Sage       --link: #b8d1bc; --link-underline: rgba(184, 209, 188, 0.88); --link-underline-hover: #e1f0e4;
+         Dusty teal --link: #9fd8d2; --link-underline: rgba(159, 216, 210, 0.88); --link-underline-hover: #d7f3f0;
+         Muted rose --link: #e1a8b1; --link-underline: rgba(225, 168, 177, 0.88); --link-underline-hover: #f5d4da;
+         Slate blue --link: #b7c5f0; --link-underline: rgba(183, 197, 240, 0.88); --link-underline-hover: #dde5ff;
+         Olive      --link: #c8d59a; --link-underline: rgba(200, 213, 154, 0.88); --link-underline-hover: #e7efc8;
+      */
+      --link: #e1a8b1;
+      --link-underline: rgba(225, 168, 177, 0.88);
+      --link-underline-hover: #f5d4da;
+      --accent-glow: rgba(75, 88, 104, 0.04);
       --toggle-bg: rgba(23, 23, 25, 0.88);
     }
 
@@ -55,6 +64,7 @@
 
     body {
       min-height: 100vh;
+      background-color: var(--bg);
       background:
         radial-gradient(circle at top left, var(--bg-top), transparent 34rem),
         radial-gradient(circle at 86% 10%, var(--accent-glow), transparent 20rem),
@@ -72,6 +82,7 @@
     a {
       color: inherit;
       text-decoration: none;
+      cursor: pointer;
     }
 
     ::selection {
@@ -196,12 +207,13 @@
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      color: var(--text);
+      color: var(--link);
       text-decoration-line: underline;
       text-decoration-color: var(--link-underline);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.22rem;
-      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.24rem;
+      text-decoration-skip-ink: none;
+      transition: color 0.2s ease, text-decoration-color 0.2s ease, opacity 0.2s ease;
     }
 
     .social-link svg,
@@ -223,18 +235,19 @@
       color: var(--accent);
       text-decoration-line: underline;
       text-decoration-color: var(--link-underline-hover);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.22rem;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.24rem;
     }
 
     .list a,
     .contact-line a {
-      color: var(--text);
+      color: var(--link);
       text-decoration-line: underline;
       text-decoration-color: var(--link-underline);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.22rem;
-      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.24rem;
+      text-decoration-skip-ink: none;
+      transition: color 0.2s ease, text-decoration-color 0.2s ease, opacity 0.2s ease;
     }
 
     .section {
