@@ -14,14 +14,35 @@
     }
 
     :root {
-      --bg: #f3efe8;
-      --panel: rgba(255, 252, 246, 0.82);
+      --bg: #f4efe7;
+      --bg-top: rgba(255, 255, 255, 0.88);
+      --bg-bottom-start: #faf6f0;
+      --bg-bottom-end: #f1ebe2;
       --text: #171717;
-      --muted: #5e594f;
-      --soft: #8d8578;
+      --muted: #575146;
+      --soft: #8e8578;
       --line: rgba(23, 23, 23, 0.12);
-      --line-strong: rgba(23, 23, 23, 0.22);
+      --line-strong: rgba(23, 23, 23, 0.2);
       --accent: #111111;
+      --accent-soft: #bc6340;
+      --accent-glow: rgba(188, 99, 64, 0.12);
+      --toggle-bg: rgba(255, 252, 247, 0.84);
+    }
+
+    body.dark-mode {
+      --bg: #101011;
+      --bg-top: rgba(76, 49, 31, 0.18);
+      --bg-bottom-start: #161618;
+      --bg-bottom-end: #0d0d0e;
+      --text: #f4eee5;
+      --muted: #c6bdae;
+      --soft: #938777;
+      --line: rgba(255, 244, 230, 0.11);
+      --line-strong: rgba(255, 244, 230, 0.18);
+      --accent: #fff8f0;
+      --accent-soft: #eea070;
+      --accent-glow: rgba(238, 160, 112, 0.14);
+      --toggle-bg: rgba(23, 23, 25, 0.88);
     }
 
     html {
@@ -31,15 +52,17 @@
     body {
       min-height: 100vh;
       background:
-        radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 34rem),
-        linear-gradient(180deg, #f8f5ef 0%, #f2ede5 100%);
+        radial-gradient(circle at top left, var(--bg-top), transparent 34rem),
+        radial-gradient(circle at 86% 10%, var(--accent-glow), transparent 22rem),
+        linear-gradient(180deg, var(--bg-bottom-start) 0%, var(--bg-bottom-end) 100%);
       color: var(--text);
       font-family:
         "IBM Plex Mono", "SFMono-Regular", "Cascadia Mono", "Segoe UI Mono",
         Consolas, "Liberation Mono", Menlo, monospace;
       font-size: 14px;
-      line-height: 1.8;
-      padding: 28px 24px 64px;
+      line-height: 1.75;
+      padding: 28px 20px 60px;
+      transition: background 0.28s ease, color 0.28s ease;
     }
 
     a {
@@ -47,10 +70,14 @@
       text-decoration: none;
     }
 
-    .shell {
-      width: min(980px, 100%);
+    ::selection {
+      background: var(--accent-soft);
+      color: #111111;
+    }
+
+    .page {
+      width: min(760px, 100%);
       margin: 0 auto;
-      padding: 18px 0 0;
     }
 
     .topbar {
@@ -58,353 +85,279 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding-bottom: 18px;
-      margin-bottom: 40px;
+      padding-bottom: 1.15rem;
+      margin-bottom: 2rem;
       border-bottom: 1px solid var(--line);
-    }
-
-    .brand {
-      font-size: 0.86rem;
-      text-transform: lowercase;
-      letter-spacing: 0.08em;
-      color: var(--soft);
     }
 
     .nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.1rem;
+      gap: 1rem;
       color: var(--muted);
     }
 
     .nav a:hover,
-    .links a:hover,
-    .item-title a:hover {
+    .socials a:hover,
+    .list a:hover,
+    .contact-line a:hover {
       color: var(--accent);
     }
 
-    .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 250px) minmax(0, 1fr);
-      gap: 72px;
-      align-items: start;
+    .theme-toggle {
+      border: 1px solid var(--line);
+      background: var(--toggle-bg);
+      color: var(--muted);
+      font: inherit;
+      padding: 0.42rem 0.78rem;
+      border-radius: 999px;
+      cursor: pointer;
     }
 
-    .sidebar {
-      position: sticky;
-      top: 28px;
+    .theme-toggle:hover {
+      color: var(--accent);
+      border-color: var(--line-strong);
     }
 
-    .eyebrow {
-      color: var(--soft);
-      margin-bottom: 0.7rem;
-      text-transform: lowercase;
-      letter-spacing: 0.06em;
+    .hero {
+      margin-bottom: 2.2rem;
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4.6rem);
-      line-height: 0.95;
+      font-size: clamp(2.8rem, 7vw, 4.8rem);
+      line-height: 0.94;
       letter-spacing: -0.08em;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       text-transform: lowercase;
     }
 
-    .meta {
+    .hero-meta,
+    .hero-copy,
+    .section-copy,
+    .footer,
+    .contact-line {
       color: var(--muted);
+    }
+
+    .hero-meta {
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-copy {
+      max-width: 60ch;
       margin-bottom: 1rem;
     }
 
-    .intro {
-      max-width: 30ch;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .links {
+    .socials {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.9rem;
+      gap: 1rem;
       color: var(--muted);
-    }
-
-    .content {
-      display: grid;
-      gap: 3rem;
     }
 
     .section {
-      scroll-margin-top: 32px;
+      margin-bottom: 2.5rem;
     }
 
-    .section-label {
-      margin-bottom: 1rem;
-      color: var(--soft);
-      letter-spacing: 0.08em;
+    .section-title {
+      margin-bottom: 0.85rem;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 500;
       text-transform: lowercase;
     }
 
     .section-copy {
-      max-width: 58ch;
-      color: var(--muted);
+      max-width: 62ch;
     }
 
     .list {
+      list-style: none;
       display: grid;
-      gap: 1.2rem;
+      gap: 0.9rem;
+      color: var(--muted);
     }
 
-    .item {
-      padding-top: 1rem;
+    .list li {
+      padding-left: 1.25rem;
+      position: relative;
+      max-width: 64ch;
+    }
+
+    .list li::before {
+      content: "-";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--soft);
+    }
+
+    .work-item {
+      padding: 1rem 0;
       border-top: 1px solid var(--line);
     }
 
-    .item:first-child {
+    .work-item:first-child {
       padding-top: 0;
       border-top: 0;
     }
 
-    .item-row {
-      display: grid;
-      grid-template-columns: 88px minmax(0, 1fr);
-      gap: 1rem;
-      align-items: start;
-    }
-
-    .item-tag {
-      color: var(--soft);
-      text-transform: lowercase;
-    }
-
-    .item-title {
-      font-size: 1rem;
+    .role {
       color: var(--text);
+      font-size: 0.98rem;
+      text-transform: lowercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .period,
+    .company {
+      color: var(--soft);
       margin-bottom: 0.2rem;
       text-transform: lowercase;
     }
 
-    .item-subtitle {
-      color: var(--soft);
-      margin-bottom: 0.45rem;
-      text-transform: lowercase;
+    .work-copy {
+      color: var(--muted);
+      max-width: 64ch;
     }
 
-    .item-copy {
-      color: var(--muted);
+    .contact-line {
       max-width: 62ch;
     }
 
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-    }
-
-    .skill-list span {
-      padding: 0.35rem 0.7rem;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      background: var(--panel);
-    }
-
     .footer {
-      margin-top: 3rem;
       padding-top: 1rem;
-      border-top: 1px solid var(--line-strong);
-      color: var(--soft);
+      border-top: 1px solid var(--line);
       text-transform: lowercase;
-    }
-
-    @media (max-width: 860px) {
-      .layout {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .sidebar {
-        position: static;
-      }
     }
 
     @media (max-width: 560px) {
       body {
-        padding: 20px 16px 48px;
+        padding: 20px 16px 44px;
       }
 
       .topbar {
-        align-items: flex-start;
         flex-direction: column;
-        gap: 0.8rem;
-      }
-
-      .item-row {
-        grid-template-columns: 1fr;
-        gap: 0.35rem;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
-  <div class="shell">
+  <div class="page">
     <header class="topbar">
-      <a class="brand" href="#home">home</a>
       <nav class="nav" aria-label="primary">
+        <a href="#home">home</a>
         <a href="#about">about</a>
-        <a href="#experience">experience</a>
+        <a href="#work">work</a>
         <a href="#projects">projects</a>
         <a href="#contact">say hi</a>
       </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="toggle dark mode">dark</button>
     </header>
 
-    <div class="layout">
-      <aside class="sidebar" id="home">
-        <div class="hero">
-          <p class="eyebrow">student portfolio</p>
-          <h1>hey, i'm nikita.</h1>
-          <p class="meta">india • <span id="localTime">00:00 AM</span></p>
-          <p class="intro">
-            i build thoughtful apps, explore machine learning ideas, and enjoy turning research into useful products.
-          </p>
-          <div class="links">
-            <a href="mailto:nikitakumari0709@gmail.com">email</a>
-            <a href="https://github.com/Nikita000kumari" target="_blank" rel="noreferrer">github</a>
-            <a href="https://www.linkedin.com/in/nikita-kumari14" target="_blank" rel="noreferrer">linkedin</a>
-          </div>
+    <main id="home">
+      <section class="hero">
+        <h1>hey, i'm nikita.</h1>
+        <p class="hero-meta">india • <span id="localTime">00:00 AM</span></p>
+        <p class="hero-copy">
+          i build things on the internet and i like projects that sit between code, machine learning, and useful everyday products.
+        </p>
+        <div class="socials">
+          <a href="mailto:nikitakumari0709@gmail.com">email</a>
+          <a href="https://github.com/Nikita000kumari" target="_blank" rel="noreferrer">github</a>
+          <a href="https://www.linkedin.com/in/nikita-kumari14" target="_blank" rel="noreferrer">linkedin</a>
         </div>
-      </aside>
+      </section>
 
-      <main class="content">
-        <section class="section" id="about">
-          <p class="section-label">01. about</p>
-          <p class="section-copy">
-            i'm 20 and currently learning by building. lately i've been spending time on mobile apps, embedded ai experiments, and practical machine learning projects that can help real people.
+      <section class="section" id="about">
+        <h2 class="section-title">01. what i'm doing rn</h2>
+        <ul class="list">
+          <li>learning by building mobile apps, embedded ai ideas, and practical machine learning projects.</li>
+          <li>looking for internships, collaborations, and stronger real-world product work.</li>
+          <li>trying to make student projects feel more useful, more polished, and more human.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">02. what i've done</h2>
+        <ul class="list">
+          <li>built <a href="https://github.com/Nikita000kumari/AlzPal" target="_blank" rel="noreferrer">alzpal</a>, an android companion for alzheimer's patients and caregivers.</li>
+          <li>worked on a smart dustbin using esp32-cam, arduino uno, and edge impulse for waste classification.</li>
+          <li>ran 500+ simulation rounds for wireless sensor network protocols during my research internship.</li>
+          <li>explored assistive technology, gps-based safety features, and context-aware systems during summer research.</li>
+        </ul>
+      </section>
+
+      <section class="section" id="work">
+        <h2 class="section-title">03. where i've worked</h2>
+
+        <article class="work-item">
+          <h3 class="role">research intern</h3>
+          <p class="period">nit delhi</p>
+          <p class="company">
+            <a href="https://drive.google.com/file/d/1B1RPaW5cWvQMS92-JFievessml1CBlwB/view?usp=sharing" target="_blank" rel="noreferrer">view certificate</a>
           </p>
-        </section>
-
-        <section class="section" id="experience">
-          <p class="section-label">02. experience</p>
-          <div class="list">
-            <article class="item">
-              <div class="item-row">
-                <p class="item-tag">intern</p>
-                <div>
-                  <h2 class="item-title">
-                    <a href="https://drive.google.com/file/d/1B1RPaW5cWvQMS92-JFievessml1CBlwB/view?usp=sharing" target="_blank" rel="noreferrer">research intern at nit delhi</a>
-                  </h2>
-                  <p class="item-copy">
-                    worked on wireless sensor network protocol simulations in python across leach, teen, deec, and tcbdga. ran 500+ rounds, visualized key network metrics, and saw 20-30% better energy efficiency with tcbdga over leach.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article class="item">
-              <div class="item-row">
-                <p class="item-tag">intern</p>
-                <div>
-                  <h2 class="item-title">
-                    <a href="https://drive.google.com/file/d/1WhHqrV-kEPg22vItYLo2J3pEpClqwSED/view?usp=sharing" target="_blank" rel="noreferrer">summer research intern at coe (ai), igdtuw</a>
-                  </h2>
-                  <p class="item-copy">
-                    contributed to alzpal, an android assistive app for alzheimer's patients and caregivers. explored gps tracking, adaptive reminders, personalized scheduling, and context-aware design choices that improve daily safety and support.
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section" id="projects">
-          <p class="section-label">03. projects</p>
-          <div class="list">
-            <article class="item">
-              <div class="item-row">
-                <p class="item-tag">app</p>
-                <div>
-                  <h2 class="item-title">
-                    <a href="https://github.com/Nikita000kumari/AlzPal" target="_blank" rel="noreferrer">alzpal</a>
-                  </h2>
-                  <p class="item-subtitle">android studio + java</p>
-                  <p class="item-copy">
-                    an android companion for alzheimer's patients and caregivers with real-time gps tracking, smart task scheduling, and ai-based reminders focused on patient safety and caregiver support.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article class="item">
-              <div class="item-row">
-                <p class="item-tag">ibin</p>
-                <div>
-                  <h2 class="item-title">
-                    <a href="https://drive.google.com/drive/folders/1l5D9nYhwd_a_tYQ-bNGuyR1Dbzofrm5v?usp=drive_link" target="_blank" rel="noreferrer">smart dustbin using esp32-cam and edge impulse</a>
-                  </h2>
-                  <p class="item-subtitle">tinyml + embedded systems</p>
-                  <p class="item-copy">
-                    built an ai-powered dustbin with esp32-cam, arduino uno, and edge impulse to classify biodegradable and non-biodegradable waste using a lightweight cnn with around 90% precision.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article class="item">
-              <div class="item-row">
-                <p class="item-tag">ml</p>
-                <div>
-                  <h2 class="item-title">machine learning mini project</h2>
-                  <p class="item-copy">
-                    reserved for your next stronger ml build, ideally one with a dataset, clear metric, and a small demo that shows how you think through real-world problems.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article class="item">
-              <div class="item-row">
-                <p class="item-tag">build</p>
-                <div>
-                  <h2 class="item-title">creative development project</h2>
-                  <p class="item-copy">
-                    a slot for a future project that combines design, interaction, and code so visitors can quickly see both your technical range and your taste.
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section" id="skills">
-          <p class="section-label">04. skills</p>
-          <div class="skill-list">
-            <span>html</span>
-            <span>css</span>
-            <span>javascript</span>
-            <span>python</span>
-            <span>android studio</span>
-            <span>java</span>
-            <span>machine learning</span>
-            <span>communication</span>
-          </div>
-        </section>
-
-        <section class="section" id="contact">
-          <p class="section-label">05. say hi</p>
-          <p class="section-copy">
-            i'm open to internships, collaborations, and conversations about apps, ai, and building better student projects.
-            reach me at <a href="mailto:nikitakumari0709@gmail.com">nikitakumari0709@gmail.com</a>.
+          <p class="work-copy">
+            worked on comparative simulation of wsn protocols using python across leach, teen, deec, and tcbdga. simulated 500+ rounds, visualized network metrics, and improved energy efficiency by 20-30% with tcbdga over leach.
           </p>
-        </section>
+        </article>
 
-        <footer class="footer">
-          <p>&copy; 2026 nikita kumari</p>
-        </footer>
-      </main>
-    </div>
+        <article class="work-item">
+          <h3 class="role">summer research intern</h3>
+          <p class="period">coe (ai), igdtuw</p>
+          <p class="company">
+            <a href="https://drive.google.com/file/d/1WhHqrV-kEPg22vItYLo2J3pEpClqwSED/view?usp=sharing" target="_blank" rel="noreferrer">view certificate</a>
+          </p>
+          <p class="work-copy">
+            contributed to alzpal, an assistive android app for alzheimer's patients and caregivers. explored gps tracking, adaptive reminders, personalized task scheduling, and context-aware design choices for better safety and support.
+          </p>
+        </article>
+      </section>
+
+      <section class="section" id="projects">
+        <h2 class="section-title">04. stuff i've built</h2>
+        <ul class="list">
+          <li><a href="https://github.com/Nikita000kumari/AlzPal" target="_blank" rel="noreferrer">alzpal</a>: android app with real-time gps tracking, smart task scheduling, and ai-based reminders for patients and caregivers.</li>
+          <li><a href="https://drive.google.com/drive/folders/1l5D9nYhwd_a_tYQ-bNGuyR1Dbzofrm5v?usp=drive_link" target="_blank" rel="noreferrer">smart dustbin</a>: tinyml-based waste classification project using esp32-cam, edge impulse, and a lightweight cnn.</li>
+          <li>machine learning mini project: a good slot for your next prediction, classification, or data-focused build with a small demo.</li>
+          <li>creative development project: a strong future slot for something that shows both visual taste and technical depth.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">05. skills</h2>
+        <ul class="list">
+          <li>html, css, javascript</li>
+          <li>python, java, android studio</li>
+          <li>machine learning, embedded ai, research workflows</li>
+          <li>communication, writing, and presenting technical work clearly</li>
+        </ul>
+      </section>
+
+      <section class="section" id="contact">
+        <h2 class="section-title">06. say hi</h2>
+        <p class="contact-line">
+          i'm open to internships, collaborations, and interesting student-tech conversations.
+          reach me at <a href="mailto:nikitakumari0709@gmail.com">nikitakumari0709@gmail.com</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 nikita kumari</p>
+    </footer>
   </div>
 
   <script>
     const timeElement = document.getElementById("localTime");
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("nikita-theme");
+
+    if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      document.body.classList.add("dark-mode");
+      themeToggle.textContent = "light";
+    }
 
     function updateTime() {
       const options = {
@@ -419,6 +372,12 @@
 
     updateTime();
     setInterval(updateTime, 60000);
+
+    themeToggle.addEventListener("click", () => {
+      const isDark = document.body.classList.toggle("dark-mode");
+      themeToggle.textContent = isDark ? "light" : "dark";
+      localStorage.setItem("nikita-theme", isDark ? "dark" : "light");
+    });
   </script>
 </body>
 </html>
