@@ -14,34 +14,34 @@
     }
 
     :root {
-      --bg: #f4efe7;
+      --bg: #f3f1ed;
       --bg-top: rgba(255, 255, 255, 0.88);
-      --bg-bottom-start: #faf6f0;
-      --bg-bottom-end: #f1ebe2;
+      --bg-bottom-start: #faf9f7;
+      --bg-bottom-end: #efede8;
       --text: #171717;
-      --muted: #575146;
-      --soft: #8e8578;
+      --muted: #53514c;
+      --soft: #87827a;
       --line: rgba(23, 23, 23, 0.12);
       --line-strong: rgba(23, 23, 23, 0.2);
       --accent: #111111;
-      --accent-soft: #bc6340;
-      --accent-glow: rgba(188, 99, 64, 0.12);
-      --toggle-bg: rgba(255, 252, 247, 0.84);
+      --accent-soft: #7b8798;
+      --accent-glow: rgba(123, 135, 152, 0.09);
+      --toggle-bg: rgba(255, 255, 255, 0.72);
     }
 
     body.dark-mode {
       --bg: #101011;
-      --bg-top: rgba(76, 49, 31, 0.18);
-      --bg-bottom-start: #161618;
+      --bg-top: rgba(78, 90, 108, 0.16);
+      --bg-bottom-start: #161719;
       --bg-bottom-end: #0d0d0e;
-      --text: #f4eee5;
-      --muted: #c6bdae;
-      --soft: #938777;
+      --text: #f1f0ec;
+      --muted: #c5c0b7;
+      --soft: #908a81;
       --line: rgba(255, 244, 230, 0.11);
       --line-strong: rgba(255, 244, 230, 0.18);
       --accent: #fff8f0;
-      --accent-soft: #eea070;
-      --accent-glow: rgba(238, 160, 112, 0.14);
+      --accent-soft: #9fb0c7;
+      --accent-glow: rgba(159, 176, 199, 0.1);
       --toggle-bg: rgba(23, 23, 25, 0.88);
     }
 
@@ -53,7 +53,7 @@
       min-height: 100vh;
       background:
         radial-gradient(circle at top left, var(--bg-top), transparent 34rem),
-        radial-gradient(circle at 86% 10%, var(--accent-glow), transparent 22rem),
+        radial-gradient(circle at 86% 10%, var(--accent-glow), transparent 20rem),
         linear-gradient(180deg, var(--bg-bottom-start) 0%, var(--bg-bottom-end) 100%);
       color: var(--text);
       font-family:
@@ -102,6 +102,8 @@
     .list a:hover,
     .contact-line a:hover {
       color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 0.18rem;
     }
 
     .theme-toggle {
@@ -225,6 +227,13 @@
       max-width: 62ch;
     }
 
+    .list li,
+    .work-copy,
+    .contact-line,
+    .hero-copy {
+      text-wrap: pretty;
+    }
+
     .footer {
       padding-top: 1rem;
       border-top: 1px solid var(--line);
@@ -259,9 +268,9 @@
     <main id="home">
       <section class="hero">
         <h1>hey, i'm nikita.</h1>
-        <p class="hero-meta">india • <span id="localTime">00:00 AM</span></p>
+        <p class="hero-meta">india | <span id="localTime">00:00 AM</span></p>
         <p class="hero-copy">
-          i build things on the internet and i like projects that sit between code, machine learning, and useful everyday products.
+          i build things on the internet, and i'm especially drawn to projects that mix code, machine learning, and practical usefulness.
         </p>
         <div class="socials">
           <a href="mailto:nikitakumari0709@gmail.com">email</a>
@@ -275,7 +284,7 @@
         <ul class="list">
           <li>learning by building mobile apps, embedded ai ideas, and practical machine learning projects.</li>
           <li>looking for internships, collaborations, and stronger real-world product work.</li>
-          <li>trying to make student projects feel more useful, more polished, and more human.</li>
+          <li>trying to make student projects feel more useful, thoughtful, and well-finished.</li>
         </ul>
       </section>
 
@@ -321,7 +330,7 @@
           <li><a href="https://github.com/Nikita000kumari/AlzPal" target="_blank" rel="noreferrer">alzpal</a>: android app with real-time gps tracking, smart task scheduling, and ai-based reminders for patients and caregivers.</li>
           <li><a href="https://drive.google.com/drive/folders/1l5D9nYhwd_a_tYQ-bNGuyR1Dbzofrm5v?usp=drive_link" target="_blank" rel="noreferrer">smart dustbin</a>: tinyml-based waste classification project using esp32-cam, edge impulse, and a lightweight cnn.</li>
           <li>machine learning mini project: a good slot for your next prediction, classification, or data-focused build with a small demo.</li>
-          <li>creative development project: a strong future slot for something that shows both visual taste and technical depth.</li>
+          <li>creative development project: a future slot for something that shows both visual taste and technical depth.</li>
         </ul>
       </section>
 
