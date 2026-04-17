@@ -74,7 +74,7 @@
         "IBM Plex Mono", "SFMono-Regular", "Cascadia Mono", "Segoe UI Mono",
         Consolas, "Liberation Mono", Menlo, monospace;
       font-size: 14px;
-      line-height: 1.75;
+      line-height: 1.2;
       padding: 28px 20px 60px;
       transition: background 0.28s ease, color 0.28s ease;
     }
@@ -172,7 +172,6 @@
 
     .hero h1 {
       font-size: clamp(2.8rem, 7vw, 4.8rem);
-      line-height: 0.94;
       letter-spacing: -0.08em;
       margin-bottom: 1rem;
       text-transform: lowercase;
@@ -255,10 +254,12 @@
     }
 
     .section-title {
-      margin-bottom: 0.85rem;
+      margin-bottom: 1rem;
       color: var(--text);
-      font-size: 1rem;
+      font-size: 1.5rem;
       font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: 0;
       text-transform: lowercase;
     }
 
@@ -324,6 +325,7 @@
     .work-copy,
     .contact-line,
     .hero-copy {
+      line-height: 1.7;
       text-wrap: pretty;
     }
 
@@ -339,16 +341,29 @@
       }
 
       .topbar {
-        align-items: flex-start;
+        position: relative;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.2rem;
+        padding-bottom: 1.4rem;
       }
 
       .nav {
-        flex: 1;
+        width: 100%;
+        justify-content: center;
+        gap: 0.95rem 1.5rem;
+        text-align: center;
       }
 
       .theme-toggle {
+        position: relative;
         flex-shrink: 0;
-        align-self: flex-start;
+        align-self: center;
+        transform: none;
+      }
+
+      .theme-toggle:hover {
+        transform: translateY(-1px);
       }
     }
   </style>
@@ -382,13 +397,6 @@
           i build things on the internet, and i'm interested in creating useful apps, exploring ideas, and learning through real projects.
         </p>
         <div class="socials">
-          <a class="social-link" href="mailto:nikitakumari0709@gmail.com">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 6.5h16v11H4z"></path>
-              <path d="m4 7 8 6 8-6"></path>
-            </svg>
-            <span>email</span>
-          </a>
           <a class="social-link" href="https://github.com/Nikita000kumari" target="_blank" rel="noreferrer">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M9 18c-4 1.2-4-2-6-2"></path>
@@ -408,7 +416,7 @@
       </section>
 
       <section class="section" id="about">
-        <h2 class="section-title">01. what i'm doing rn</h2>
+        <h2 class="section-title">what i'm doing rn</h2>
         <ul class="list">
           <li>learning app development through hands-on projects and experimenting with useful tech ideas.</li>
           <li>looking for internships, collaborations, and stronger real-world product work.</li>
@@ -417,7 +425,7 @@
       </section>
 
       <section class="section">
-        <h2 class="section-title">02. what i've done</h2>
+        <h2 class="section-title">what i've done</h2>
         <ul class="list">
           <li>built <a href="https://github.com/Nikita000kumari/AlzPal" target="_blank" rel="noreferrer">alzpal</a>, an android companion for alzheimer's patients and caregivers.</li>
           <li>worked on <a href="https://drive.google.com/drive/folders/1l5D9nYhwd_a_tYQ-bNGuyR1Dbzofrm5v?usp=drive_link" target="_blank" rel="noreferrer">ibin</a>, a smart dustbin project using esp32-cam, arduino uno, and edge impulse for waste classification.</li>
@@ -427,7 +435,7 @@
       </section>
 
       <section class="section" id="work">
-        <h2 class="section-title">03. where i've worked</h2>
+        <h2 class="section-title">where i've worked</h2>
 
         <article class="work-item">
           <h3 class="role">research intern</h3>
@@ -453,7 +461,7 @@
       </section>
 
       <section class="section" id="projects">
-        <h2 class="section-title">04. stuff i've built</h2>
+        <h2 class="section-title">stuff i've built</h2>
         <ul class="list">
           <li><a href="https://github.com/Nikita000kumari/AlzPal" target="_blank" rel="noreferrer">alzpal</a>: android app with real-time gps tracking, smart task scheduling, and ai-based reminders for patients and caregivers.</li>
           <li><a href="https://drive.google.com/drive/folders/1l5D9nYhwd_a_tYQ-bNGuyR1Dbzofrm5v?usp=drive_link" target="_blank" rel="noreferrer">ibin</a>: a smart dustbin project using esp32-cam, edge impulse, and a lightweight cnn for waste classification.</li>
@@ -462,7 +470,7 @@
       </section>
 
       <section class="section">
-        <h2 class="section-title">05. skills</h2>
+        <h2 class="section-title">skills</h2>
         <ul class="list">
           <li>html, css, javascript, react</li>
           <li>python, kotlin, android studio</li>
@@ -473,7 +481,7 @@
       </section>
 
       <section class="section">
-        <h2 class="section-title">06. writing</h2>
+        <h2 class="section-title">writing</h2>
         <ul class="list">
           <li><a href="https://medium.com/@Night_owllll11/whats-is-wsn-wireless-sensor-network-8a0f5408c8e6" target="_blank" rel="noreferrer">what's is wsn (wireless sensor network)</a>: a short piece explaining the basics of wireless sensor networks and why they matter.</li>
           <li><a href="https://medium.com/@Night_owllll11/how-cpus-interact-with-so-many-different-devices-393e7dc8e1ec" target="_blank" rel="noreferrer">how cpus interact with so many different devices</a>: a simple explainer on how systems communicate with hardware and peripherals.</li>
@@ -481,7 +489,7 @@
       </section>
 
       <section class="section" id="contact">
-        <h2 class="section-title">07. say hi</h2>
+        <h2 class="section-title">say hi</h2>
         <p class="contact-line">
           i'm currently open to internships, research opportunities, and software roles. if you'd like to collaborate, talk about a project, or just say hi, you can reach me at <a class="inline-link" href="mailto:nikitakumari0709@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16v11H4z"></path><path d="m4 7 8 6 8-6"></path></svg><span>nikitakumari0709@gmail.com</span></a>.
         </p>
